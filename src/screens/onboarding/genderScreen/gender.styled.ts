@@ -61,7 +61,7 @@ export const ContentContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin-top: ${Spacing.xxl};
+  margin-top: ${Spacing.xxl}px;
   padding: ${Spacing.xl}px ${Spacing.lg}px;
   padding-bottom: ${Spacing.xxl + 10}px;
 `;
