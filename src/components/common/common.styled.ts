@@ -18,14 +18,6 @@ export const ButtonText = styled(Text)`
   line-height: 20px;
 `;
 
-export const HeaderBackgroundImage = styled.Image`
-  position: absolute;
-  top: -15px;
-  left: -5px;
-  width: 100%;
-  height: 168px;
-`;
-
 export const HeaderContainer = styled.View`
   position: absolute;
   top: ${Spacing.xl * 2}px;
@@ -33,35 +25,27 @@ export const HeaderContainer = styled.View`
   right: 0;
   width: 100%;
   height: 168px;
-  overflow: hidden;
-  z-index: 10;
 `;
+
 export const TopRow = styled.View`
-  position: absolute;
-  top: 10px;
-  left: 0;
-  right: 0;
-  height: 42px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding-horizontal: ${Spacing.lg}px;
-  z-index: 2;
+  height: 48px;
 `;
 
 export const LeftContainer = styled.View`
-  width: 60px;
+  width: 50px;
   align-items: flex-start;
   justify-content: center;
 `;
 
 export const CenterContainer = styled.View`
-  position: absolute;
-  top: 84px;
-  left: 0;
-  right: 0;
   align-items: center;
   justify-content: center;
+  padding-horizontal: ${Spacing.lg}px;
+  margin-top: ${Spacing.lg}px;
 `;
 
 export const RightContainer = styled.View`
@@ -71,29 +55,37 @@ export const RightContainer = styled.View`
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  width: 42px;
-  height: 42px;
-  border-radius: 21px;
-  background-color: transparent;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background-color: ${Colors.charcoal};
   border-width: 1px;
-  border-color: #222222;
+  border-color: rgba(255, 255, 255, 0.12);
   align-items: center;
   justify-content: center;
 `;
 
 export const HeaderTitle = styled.Text`
   color: ${Colors.white};
-  font-size: 18px;
-  font-family: ${Fonts.semiBold};
+  font-size: 22px;
+  font-family: ${Fonts.bold};
   text-align: center;
+  line-height: 28px;
 `;
 
 export const SkipButton = styled.TouchableOpacity`
-  padding-vertical: 10px;
+  padding-vertical: 8px;
+  padding-horizontal: 10px;
 `;
 
 export const SkipText = styled.Text`
   color: ${Colors.white};
-  font-size: 12px;
-  font-family: ${Fonts.regular};
+  font-size: 14px;
+  font-family: ${Fonts.medium};
+`;
+
+export const SwooshContainer = styled.View`
+  width: 100%;
+  height: 36px;
+  margin-top: 2px;
 `;

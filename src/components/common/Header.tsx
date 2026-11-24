@@ -1,4 +1,6 @@
 import React from 'react';
+import { useWindowDimensions } from 'react-native';
+import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 import { ArrowLeftIcon } from './Icons';
 import { Colors } from '../../theme/colors';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +8,6 @@ import { hapticFeedback } from '../../utils/haptics';
 import {
   BackButton,
   CenterContainer,
-  HeaderBackgroundImage,
   HeaderContainer,
   HeaderTitle,
   LeftContainer,
@@ -14,6 +15,7 @@ import {
   SkipButton,
   SkipText,
   TopRow,
+  SwooshContainer,
 } from './common.styled';
 
 interface HeaderProps {
@@ -32,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
   rightAction,
 }) => {
   const { t } = useTranslation();
+  const { width: screenWidth = 390 } = useWindowDimensions();
 
   const handleBack = () => {
     hapticFeedback('button');
@@ -43,20 +46,17 @@ export const Header: React.FC<HeaderProps> = ({
     onSkip?.();
   };
 
+  const progressWidth = Math.max(70);
+
   return (
     <HeaderContainer>
-      <HeaderBackgroundImage
-        source={require('../../assets/images/common/headerBackground.png')}
-        resizeMode="cover"
-      />
-
       <TopRow>
         <LeftContainer>
-          {showBack && onBack && (
+          {showBack && onBack ? (
             <BackButton onPress={handleBack} hitSlop={10}>
-              <ArrowLeftIcon size={22} color={Colors.white} />
+              <ArrowLeftIcon size={18} color={Colors.white} />
             </BackButton>
-          )}
+          ) : null}
         </LeftContainer>
 
         <RightContainer>
@@ -70,9 +70,38 @@ export const Header: React.FC<HeaderProps> = ({
         </RightContainer>
       </TopRow>
 
-      <CenterContainer>
-        {title && <HeaderTitle>{title}</HeaderTitle>}
-      </CenterContainer>
+      {title ? (
+        <CenterContainer>
+          <HeaderTitle>{title}</HeaderTitle>
+        </CenterContainer>
+      ) : null}
+
+      <SwooshContainer pointerEvents="none">
+        <Svg
+          width={screenWidth}
+          height={36}
+          viewBox={`0 0 ${screenWidth} 36`}
+          fill="none"
+        >
+          <Defs>
+            <LinearGradient id="swooshGrad" x1="0" y1="0" x2="1" y2="0">
+              <Stop offset="0%" stopColor={Colors.blue400} stopOpacity="1" />
+              <Stop
+                offset="80%"
+                stopColor={Colors.blue400}
+                stopOpacity="0.85"
+              />
+              <Stop offset="100%" stopColor={Colors.blue400} stopOpacity="0" />
+            </LinearGradient>
+          </Defs>
+          <Path
+            d={`M 2 0 C 2 24 16 34 44 34 L ${progressWidth} 34`}
+            stroke="url(#swooshGrad)"
+            strokeWidth={3.5}
+            strokeLinecap="round"
+          />
+        </Svg>
+      </SwooshContainer>
     </HeaderContainer>
   );
 };
