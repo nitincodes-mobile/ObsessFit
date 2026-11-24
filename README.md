@@ -1,97 +1,124 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# ObsessFit - React Native Fitness & Biometric App
 
-# Getting Started
+A high-performance React Native fitness application built with pixel-perfect fidelity to the Figma design specifications and the **Fitness App UI & Animation** assignment requirements.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🌟 Key Features & Highlights
 
-## Step 1: Start Metro
+### 1. "Personalize Your Fitness Journey" Onboarding Flow
+A complete, seamless 10-step assessment journey crafted to calculate metabolic rate and personalized workout splits:
+- **Intro / Welcome Screen**: Full-screen atmospheric hero visual with glowing CTA to begin.
+- **Step 1 - Biological Profile**: Interactive gender cards with smooth active states (Male, Female, Other).
+- **Step 2 - Age Wheel Picker**: Smooth vertical scroll wheel with active focal band and dynamic typography scaling.
+- **Step 3 - Current Weight Scale**: **True weighing scale dial** with angular drag rotation, live numeric readout, unit toggle (kg/lbs), inertia momentum, and haptic vibration on every tick!
+- **Step 4 - Height Ruler**: **Precision vertical ruler** with millimeter & centimeter tick marks, fixed glowing indicator needle, momentum glide, and tick haptics!
+- **Step 5 - Primary Fitness Goal**: 8 tailored fitness goals with custom iconography and smooth selection cards.
+- **Step 6 - Target Weight Scale**: High-precision circular dial scale to establish target body mass.
+- **Step 7 - Target Timeline**: Realistic progression speed options (1-3 months, 3-6 months, 6-12 months, lifestyle).
+- **Step 8 - Daily Activity Level**: NEAT activity factor selection (Sedentary to Very Active) with BMR multipliers.
+- **Step 9 - Fitness Experience**: Level calibrations from Beginner to Advanced.
+- **Step 10 - Training Frequency**: Weekly split preference (2 to 5+ days/week).
+- **Plan Generating Experience**: Interactive multi-stage biometric calculation screen with rotating ring indicator and checklist animations.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+---
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 2. Physical Weighing Scale & Ruler Mechanics (Core Requirement)
+Both scales are engineered to feel like authentic physical measuring instruments rather than standard sliders:
+- **Circular Weight Scale Dial (`WeightScaleDial.tsx`)**:
+  - Radial SVG gauge with 72 calibrated tick marks (major, medium, and minor).
+  - Fixed cyan pointer needle at the top with ambient glow.
+  - Tangential and angular touch tracking via `PanResponder`.
+  - Natural angular velocity decay momentum on release.
+  - Automatic snapping to the nearest 0.5 unit.
+  - Live haptic vibration feedback (`Vibration.vibrate`) whenever a tick mark crosses under the pointer needle.
+  - Animated toggle between metric (**kg**) and imperial (**lbs**).
+- **Vertical Height Ruler (`HeightRuler.tsx`)**:
+  - Precision vertical ruler with millimeter lines and centimeter labels.
+  - Fixed glowing center pointer with horizontal guide indicator.
+  - Fluid dragging with inertia deceleration.
+  - Automatic snapping to the nearest whole integer.
+  - Haptic tick vibration on each tick threshold.
+  - Toggle between **cm** and **ft / in**.
 
-```sh
-# Using npm
+---
+
+### 3. Home Screen (Pixel-Perfect Figma Replication)
+- **Top Header**: Live location selector (`Sector 62, Noida ▾`), notification badge, and profile avatar.
+- **Global Search**: Search bar for gyms, sports courts, and events.
+- **Category Navigation**: Quick filter pills (All, Gyms, Play, Events, Trainers).
+- **"In The Spotlight" Featured Banner**: Showcase card for the **City Half Marathon 2026** with date tags, price tags, attendee avatars, and direct register CTA.
+- **"Top Recommended Gyms"**: Horizontal carousel of gym cards featuring high-res imagery, rating badges, distance, tags (CrossFit, Strength, Steam), and monthly rates.
+- **"Badminton & Sports Courts"**: Sports court cards with sport badges, surface information, pricing, and instant slot reservation.
+- **"Upcoming Fitness Events"**: Upcoming races and events with date and venue info.
+
+---
+
+### 4. Event Details Screen (City Half Marathon)
+- Parallax-style hero banner with back navigation and floating bookmark/share actions.
+- Event metadata cards (Date & Time, JLN Stadium Venue with map preview).
+- Attendee counter with avatar stack (+2,450 runners registered).
+- "About the Event" comprehensive narrative and race distance categories (5K, 10K, 21K).
+- "Things to Know" rules checklist with icons.
+- Event photo gallery carousel.
+- Verified organizer card ("Delhi Runners Club").
+- Sticky bottom checkout bar with price indicator and "Book Now" CTA.
+
+---
+
+### 5. Extended Inner Flow Pages
+Designed cohesively in the same sleek dark aesthetic:
+- **Date & Time Picker Modal (`DatePickerModal.tsx`)**: Horizontal day/date chips and reporting time batch selectors.
+- **Ticket Type Selector Modal (`TicketSelectModal.tsx`)**: 5K Fun Run, 10K Challenge, and 21K Half Marathon passes with perks and quantity counters.
+- **Review Booking Screen (`ReviewBookingScreen.tsx`)**: Booking breakdown, promo code discount engine (e.g. `OBSESS15`), contact input fields, GST calculation, and platform fee summary.
+- **Booking Confirmed Screen (`BookingSuccessScreen.tsx`)**: Celebration checkmark, digital pass with dashed tear perforation, high-resolution QR Code pass, and pass code.
+- **Explore Gyms Screen (`GymsScreen.tsx`) & Details (`GymDetailsScreen.tsx`)**: Multi-category filterable gym directory with facility passes (Day Pass, Monthly, 3-Month).
+- **Sports Courts Screen (`PlayScreen.tsx`) & Details (`CourtDetailsScreen.tsx`)**: Hourly court booking for Badminton, Turf Football, Pickleball, and Tennis with slot availability.
+- **User Profile Screen (`ProfileScreen.tsx`)**: Biometric summary dashboard (Weight, Height, Target, calculated BMI), personalized plan blueprint, active digital passes with QR ticket view, and a 1-click button to re-run the assessment onboarding flow anytime.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **React Native 0.88.1** (New Architecture compatible)
+- **React 19.3.0**
+- **TypeScript** (Strict mode, 100% type-safe, zero compile errors)
+- **React Navigation 7** (`@react-navigation/native-stack` & `@react-navigation/bottom-tabs`)
+- **React Native SVG** (`react-native-svg`) for custom vector icons, dials, and ruler scales
+- **React Native Safe Area Context**
+- **Physics & Gestures**: React Native native `PanResponder`, `Animated`, and `Vibration` for 60fps momentum decay and haptics
+
+---
+
+## 🚀 Running the App
+
+### Prerequisites
+- Node.js >= 22
+- JDK 17 (Zulu JDK 17 recommended)
+- Android SDK Platform 35 / Command-line Tools / NDK
+
+### Installation
+```bash
+npm install
+```
+
+### Running on Android
+```bash
+# Start Metro bundler
 npm start
 
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+# In a separate terminal, launch Android app
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+### Running on iOS
+```bash
+cd ios && bundle exec pod install && cd ..
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### Building Android Release / Debug APK
+```bash
+cd android
+./gradlew assembleDebug
+# The output APK will be generated at:
+# android/app/build/outputs/apk/debug/app-debug.apk
+```

@@ -1,0 +1,87 @@
+{
+    "common": {
+        "skip": "Skip",
+        "next": "Next",
+        "complete": "Complete"
+    },
+    "welcomeScreen": {
+        "title": "Let's build your\npersonal fitness plan",
+        "subTitle": "Takes only 60 seconds. Build only for you.",
+        "button": "Start"
+    },
+    "genderScreen": {
+        "title": "What best describes you?",
+        "subTitle": "Your data is private and secure"
+    },
+    "ageScreen": {
+        "title": "What's your age?"
+    },
+    "weightScreen": {
+        "title": "What's your current weight?"
+    },
+    "heightScreen": {
+        "title": "What's your height?"
+    },
+    "primaryGoalScreen": {
+        "title": "What's your primary goal?",
+        "goals": {
+            "fat_loss": "Fat loss",
+            "muscle_gain": "Muscle gain / weight lifting",
+            "strength_training": "Strength training",
+            "running": "Running",
+            "cycling": "Cycling",
+            "sports_performance": "Sports performance",
+            "yoga_flexibility": "Yoga / Flexibility",
+            "endurance_hybrid_training": "Endurance / Hybrid Training",
+            "event_preparation": "Event Preparation"
+        }
+    },
+    "targetWeightScreen": {
+        "title": "What's your target weight?"
+    },
+    "targetTimelineScreen": {
+        "title": "When do you want results?",
+        "timelines": {
+            "in30Days": "In 30 days",
+            "in60Days": "In 60 days",
+            "in90Days": "In 90 days",
+            "in180Days": "In 6 months+",
+            "noDeadline": "No deadline / lifestyle change"
+        }
+    },
+    "activityLevelScreen": {
+        "title": "Daily activity level?",
+        "levels": {
+            "sedentary": "Mostly Sitting (Desk job)",
+            "lightly_active": "Lightly Active (Walks, chores)",
+            "moderately_active": "Moderately active",
+            "highly_active": "Highly Active"
+        }
+    },
+    "fitnessExperienceScreen": {
+        "title": "What's your fitness experienced?",
+        "levels": {
+            "beginner": "Beginner",
+            "intermediate": "Intermediate",
+            "advanced": "Advanced",
+            "athlete": "Athlete / Highly experienced"
+        }
+    },
+    "trainingDaysScreen": {
+        "title": "Training days / week",
+        "daysOptions": {
+            "two_days": {
+                "title": "2 Days / week"
+            },
+            "three_days": {
+                "title": "3 Days / week"
+            },
+            "four_days": {
+                "title": "4 Days / week"
+            },
+            "six_plus_days": {
+                "title": "6+ Days / week"
+            }
+        }
+    }
+}

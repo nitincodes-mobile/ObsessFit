@@ -1,0 +1,1 @@
+export { AgeScreen } from './AgeScreen';
